@@ -1,4 +1,4 @@
-k# Weeping Angel Webshell
+# Weeping Angel Webshell
 
 WeepingAngel is a webshell written in PHP and Javascript. It makes use of an encrypted connection and obfuscation of the PHP code.
 
