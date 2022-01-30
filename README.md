@@ -4,7 +4,7 @@ WeepingAngel is a webshell written in PHP and Javascript. It makes use of an enc
 
 ## Levels of obfuscation
 -The PHP code is mainly encrypted with AES.  
--The connection from the victim and the user is encrypted.
+-The connection from the victim and the user is encrypted.  
 -Function hiding, the purpose of the functions are obfuscated.
 
 ## Usage
