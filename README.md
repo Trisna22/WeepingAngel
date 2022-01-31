@@ -20,3 +20,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+## Credits
+For the awesome terminal. [JQueryTerminal](https://terminal.jcubic.pl/)
