@@ -1,5 +1,10 @@
 <?php
 
+	/**
+	 * PHP script for encrypting payload, in addition of the obfuscate.py script.
+	 * Because OPENSSL with PHP and Python don 't work together.
+	 */
+
 	if (count($argv) != 3) {
 		echo "Usage: " . $argv[0] . " [key] [iv]\n";
 		die();

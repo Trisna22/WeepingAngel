@@ -6,6 +6,7 @@
 #!/usr/bin/env python3
 import random, string, os
 
+# Default passphrase and init vector.
 INIT_VECTOR = "6343151431231434"
 PASSWORD = "BigPassword123!"
 
