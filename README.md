@@ -3,14 +3,13 @@
 WeepingAngel is a webshell written in PHP and Javascript. It makes use of an encrypted connection and obfuscation of the PHP code.
 
 ## Levels of obfuscation
--The PHP code is mainly encrypted with AES.  
--The connection from the victim and the user is encrypted.  
+-The PHP code is mainly encrypted with AES.
 -Function hiding, the purpose of the functions are obfuscated.
+-The connection from the victim and the user is encrypted.(not yet)  
 
 ## Usage
-
-When you find a file upload vuln with PHP execution, you can upload the weepingAngel.php script and get a webshell on the location of the script.  
-The weepingAngel_nocomm.php is the file without the comments and extra obfuscation.
+First run the obfuscate.py script to build the WeepingAngel script with use of password and dynamic generated obfuscation.  
+When you find a file upload vuln with PHP execution, you can upload the upload.php script and get a webshell on the location of the script.  
 
 ## Screenshot in action
 ![Screenshot](/weepingAngel_screenshot.png)
