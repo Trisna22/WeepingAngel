@@ -2,3 +2,4 @@ debug/*
 encodeFunction.py
 stage2.php
 upload.php
+*.bin
