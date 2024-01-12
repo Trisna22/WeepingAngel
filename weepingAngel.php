@@ -45,6 +45,55 @@
                     if (this.status == 200) {
                         const {result, code} = JSON.parse(this.responseText);
 
+                        console.log(code);
+                        switch (code) {
+                            case 127: {
+                                terminal.echo("Sorry, command not found!");
+                                return;
+                            }
+                            case 2: {
+                                terminal.echo("Path not found!");
+                                return;
+                            }
+                            case 1:
+                            case 13: {
+                                terminal.echo("Permission denied!");
+                                return;
+                            }
+                            case 21: {
+                                terminal.echo("Is a directory!");
+                                return;
+                            }
+                            case 17: {
+                                terminal.echo("File exists!");
+                                return;
+                            }
+                            case 22: {
+                                terminal.echo("Invalid argument");
+                                return;
+                            }
+                            case 111: {
+                                terminal.echo("Connection refused!");
+                                return;
+                            }
+                            case 110: {
+                                terminal.echo("Connection timed out!");
+                                return;
+                            }
+                            case 112: {
+                                terminal.echo("Host is down!");
+                                return;
+                            }
+                            case 113: {
+                                terminal.echo("No route to host!");
+                                return;
+                            }
+
+                            default: {
+                                break;
+                            }
+                        }
+
                         // Print output to terminal.
                         for (r of result) {
                             terminal.echo(r)
